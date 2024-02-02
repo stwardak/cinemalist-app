@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
  # Movie Routes
-  get "/movies" => "movies#index"
-  # get "/movies/:id" => "movies#show"
+  get "/movies" => "movies#index" # a user can view all movies
+  get "/movies/:id" => "movies#show" # a user can view a specific movie
   # post "/movies" => "movies#create"
   # patch "/movies/:id" => "movies#update"
   # delete "/movies/:id" => "movies#destroy"
