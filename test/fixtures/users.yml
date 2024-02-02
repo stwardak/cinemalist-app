@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  email: MyString
+  username: MyUsername1
+  email: MyEmail1
   password_digest: MyString
   profile_visibility: false
 
 two:
-  username: MyString
-  email: MyString
+  username: MyUsername2
+  email: MyEmail2
   password_digest: MyString
   profile_visibility: false
