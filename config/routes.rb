@@ -4,16 +4,16 @@ Rails.application.routes.draw do
  # Movie Routes
   get "/movies" => "movies#index" # a user can view all movies
   get "/movies/:id" => "movies#show" # a user can view a specific movie
-  # post "/movies" => "movies#create"
-  # patch "/movies/:id" => "movies#update"
-  # delete "/movies/:id" => "movies#destroy"
+  # post "/movies" => "movies#create" # will only need for admin
+  # patch "/movies/:id" => "movies#update" # will only need for admin
+  # delete "/movies/:id" => "movies#destroy" # shouldn't need
 
 
-# # User Routes
+# User Routes
 #   get "/users" => "users#index"
 #   get "/users/:id" => "users#show"
-#   post "/users" => "users#create"
-#   patch "/users/:id" => "users#update"
+  post "/users" => "users#create" # create a new user / a user can sign up
+  patch "/users/:id" => "users#update" # user can edit their login information and settings
 #   delete "/users/:id" => "users#destroy"
 
 #   # Director Routes
