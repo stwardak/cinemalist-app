@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
- # Movie Routes
+  # Movie Routes
   get "/movies" => "movies#index" # a user can view all movies
   get "/movies/:id" => "movies#show" # a user can view a specific movie
   # post "/movies" => "movies#create" # will only need for admin
@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   # delete "/movies/:id" => "movies#destroy" # shouldn't need
 
 
-# User Routes
-#   get "/users" => "users#index"
-#   get "/users/:id" => "users#show"
+  # User Routes
+  # get "/users" => "users#index"
+  # get "/users/:id" => "users#show"
   post "/users" => "users#create" # create a new user / a user can sign up
   patch "/users/:id" => "users#update" # user can edit their login information and settings
-#   delete "/users/:id" => "users#destroy"
+  # delete "/users/:id" => "users#destroy"
 
 #   # Director Routes
 #   get "/directors" => "directors#index"
@@ -44,5 +44,9 @@ Rails.application.routes.draw do
 #   post "/category_movies" => "category_movies#create"
 #   patch "/category_movies/:id" => "category_movies#update"
 #   delete "/category_movies/:id" => "category_movies#destroy"
+
+  # Sessions Routes
+  post "/sessions" => "sessions#create" # user login session
+
 
 end
