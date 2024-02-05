@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # get "/users/:id" => "users#show" # view specific user
   post "/users" => "users#create" # create a new user / a user can sign up
   patch "/users/:id" => "users#update" # user can edit their login information and settings
-  # delete "/users/:id" => "users#destroy" # allow users to delete their account
+  delete "/users/:id" => "users#destroy" # allow users to delete their account
 
 #   # Director Routes
 #   get "/directors" => "directors#index" # a user can view all directors
@@ -31,11 +31,11 @@ Rails.application.routes.draw do
 #   delete "/categories/:id" => "categories#destroy" # shouldn't need, unless for admin purposes
 
 #   # Favorite Routes
-#   get "/favorites" => "favorites#index" # a user can view their favorites
+  get "/favorites" => "favorites#index" # a user can view their favorites
 #   get "/favorites/:id" => "favorites#show" # a user can view details for one of their favorites 
-#   post "/favorites" => "favorites#create" # a user can add a movie to their favorites
+  post "/favorites" => "favorites#create" # a user can add a movie to their favorites
 #   patch "/favorites/:id" => "favorites#update" # shouldn't need, unless for admin purposes
-#   delete "/favorites/:id" => "favorites#destroy" # a user can remove a movie from their favorites
+  delete "/favorites/:id" => "favorites#destroy" # a user can remove a movie from their favorites
 
 
 #   # Category_Movie Routes

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = current_user
     @user.update(
       username: params[:username] || @user.username,
       email: params[:email] || @user.email,
@@ -30,5 +30,11 @@ class UsersController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
   end
-  
+
+  def destroy
+    @user = current_user
+    @user.destroy
+    render json: { message: "Account has been successfully deleted" }
+  end
+
 end
