@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
 
   def create
     if Favorite.exists?(user_id: current_user, movie_id:params[:movie_id])
-      rendor json: { message: "Movie has already been added to favorites" }
+      render json: { message: "Movie has already been added to favorites" }
     else
       @favorite = Favorite.create(
         user_id: current_user.id,

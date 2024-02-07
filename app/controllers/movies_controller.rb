@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
   
   def index
-    @movies = Movie.all
+    @movies = Movie.order(id: :asc)
+    # @movies = Movie.all
     render :index
   end
 
