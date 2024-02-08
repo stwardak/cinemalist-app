@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
 #   # Favorite Routes
   get "/favorites" => "favorites#index" # a user can view their favorites
+  get "/usersfavorites" => "favorites#index" # a user can view their favorites
+
 #   get "/favorites/:id" => "favorites#show" # a user can view details for one of their favorites 
   post "/favorites" => "favorites#create" # a user can add a movie to their favorites
 #   patch "/favorites/:id" => "favorites#update" # shouldn't need, unless for admin purposes
@@ -66,10 +68,9 @@ delete "/seen-it/:id" => "watched_movies#destroy" # a user can remove a movie fr
   # Reviews Routes
 
   get "/movies/:movie_id/reviews" => "reviews#index" # a user can view all reviews for a movie
-#   get "/reviews/:id" => "reviews#show" # a user can view details for one of their reviews 
-  post "/reviews" => "reviews#create" # a user can add a review to a movie
-#   patch "/reviews/:id" => "reviews#update" # a user can edit their review
-  delete "/reviews/:id" => "reviews#destroy" # a user can delete their own review
-
+  get "/movies/:movie_id/reviews/:id" => "reviews#show" # a user can view a specific review
+  post "/movies/:movie_id/reviews" => "reviews#create" # a user can add a review to a movie
+#   patch "/movies/:movie_id/reviews/:id" => "reviews#update" # a user can edit their review
+  delete "/movies/:movie_id/reviews/:id" => "reviews#destroy" # a user can delete their own review
 
 end
