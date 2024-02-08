@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  belongs_to :director
+  belongs_to :director, optional: true
   has_many :favorites
   has_many :users, through: :favorites
   has_many :category_movies
