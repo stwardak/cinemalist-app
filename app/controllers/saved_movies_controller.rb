@@ -6,17 +6,17 @@ class SavedMoviesController < ApplicationController
     render :index
   end
 
-  # def create
-  #   if Favorite.exists?(user_id: current_user, movie_id:params[:movie_id])
-  #     render json: { message: "Movie has already been added to favorites" }
-  #   else
-  #     @favorite = Favorite.create(
-  #       user_id: current_user.id,
-  #       movie_id: params[:movie_id]
-  #     )
-  #     render :show
-  #   end
-  # end
+  def create
+    if SavedMovie.exists?(user_id: current_user, movie_id:params[:movie_id])
+      render json: { message: "Movie has already been added to favorites" }
+    else
+      @saved_movie = SavedMovie.create(
+        user_id: current_user.id,
+        movie_id: params[:movie_id]
+      )
+      render :show
+    end
+  end
 
   # def destroy
   #   @favorite = Favorite.find_by(id: params[:id])
