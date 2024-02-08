@@ -63,4 +63,11 @@ post "/watchlist" => "saved_movies#create" # a user can add a movie to their wat
 #   patch "/watchlist/:id" => "saved_movies#update" # shouldn't need, unless for admin purposes
 delete "/watchlist/:id" => "saved_movies#destroy" # a user can remove a movie from watchlist
 
+#   # Watched Movies (aka Seen It) Routes
+get "/seen-it" => "watched_movies#index" # a user can view their watched movies
+# get "/seen-it/:id" => "watched_movies#show" # a user can view details for a movie they've seen
+post "/seen-it" => "watched_movies#create" # a user can add a movie to their watched movies list
+#   patch "/seen-it/:id" => "watched_movies#update" # shouldn't need, unless for admin purposes
+delete "/seen-it/:id" => "watched_movies#destroy" # a user can remove a movie from there seen-it list
+
 end
