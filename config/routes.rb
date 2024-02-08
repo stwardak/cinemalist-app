@@ -49,11 +49,18 @@ Rails.application.routes.draw do
   post "/sessions" => "sessions#create" # user login session
 
 
-#   # Saved Movies Routes
-  get "/saved_movies" => "saved_movies#index" # a user can view their watchlist
-  get "/saved_movies/:id" => "saved_movies#show" # a user can view details for a movie on their watchlist
-  post "/saved_movies" => "saved_movies#create" # a user can add a movie to their watchlist
-#   patch "/saved_movies/:id" => "saved_movies#update" # shouldn't need, unless for admin purposes
-  delete "/saved_movies/:id" => "saved_movies#destroy" # a user can remove a movie from watchlist
+# #   # Saved Movies Routes
+#   get "/saved_movies" => "saved_movies#index" # a user can view their watchlist
+#   get "/saved_movies/:id" => "saved_movies#show" # a user can view details for a movie on their watchlist
+#   post "/saved_movies" => "saved_movies#create" # a user can add a movie to their watchlist
+# #   patch "/saved_movies/:id" => "saved_movies#update" # shouldn't need, unless for admin purposes
+#   delete "/saved_movies/:id" => "saved_movies#destroy" # a user can remove a movie from watchlist
+
+#   # Saved Movies (aka Watchlist) Routes
+get "/watchlist" => "saved_movies#index" # a user can view their watchlist
+# get "/watchlist/:id" => "saved_movies#show" # a user can view details for a movie on their watchlist
+post "/watchlist" => "saved_movies#create" # a user can add a movie to their watchlist
+#   patch "/watchlist/:id" => "saved_movies#update" # shouldn't need, unless for admin purposes
+delete "/watchlist/:id" => "saved_movies#destroy" # a user can remove a movie from watchlist
 
 end
