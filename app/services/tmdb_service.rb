@@ -21,7 +21,7 @@ class TmdbService
 
       if movie_details
         genres = movie_details['genres']
-        categories = genres.map { |genre| Category.find_or_create_by(tmdb_genre_id: genre['id'], genre: genre['name']) }
+        genres = genres.map { |genre| Genre.find_or_create_by(tmdb_genre_id: genre['id'], genre: genre['name']) }
         puts "Movie details: #{movie_details.inspect}"
         movie = Movie.find_or_initialize_by(external_id: movie_data['id'])
         movie.title = movie_data['original_title']
@@ -32,7 +32,7 @@ class TmdbService
         puts "Release date present: #{release_date}"
         movie.image_url = "https://image.tmdb.org/t/p/original#{movie_details['poster_path']}" if movie_details['poster_path']
         puts "Image URL: #{movie.image_url}"
-        movie.categories = categories
+        movie.genres = genres
         credits = fetch_movie_credits(movie_data['id'])
         director = credits['crew'].find { |member| member['job'] == 'Director' }
 

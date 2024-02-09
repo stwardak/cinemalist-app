@@ -4,8 +4,8 @@ class Movie < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
 
-  has_many :category_movies
-  has_many :categories, through: :category_movies
+  has_many :movie_genres
+  has_many :genres, through: :movie_genres
 
   has_many :reviews
   has_many :users, through: :reviews

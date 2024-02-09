@@ -23,12 +23,12 @@ Rails.application.routes.draw do
 #   patch "/directors/:id" => "directors#update" # shouldn't need, unless for admin purposes
 #   delete "/directors/:id" => "directors#destroy" # shouldn't need, unless for admin purposes
 
-#   # Category Routes
-#   get "/categories" => "categories#index" # a user can browse movies by category
-#   get "/categories/:id" => "categories#show" # a user can view all movies in a category
-#   post "/categories" => "categories#create" # shouldn't need, unless for admin purposes
-#   patch "/categories/:id" => "categories#update" # shouldn't need, unless for admin purposes
-#   delete "/categories/:id" => "categories#destroy" # shouldn't need, unless for admin purposes
+#   # Genre Routes
+#   get "/genres" => "genres#index" # a user can browse movies by genre
+#   get "/genres/:id" => "genres#show" # a user can view all movies in a genre
+#   post "/genres" => "genres#create" # shouldn't need, unless for admin purposes
+#   patch "/genres/:id" => "genres#update" # shouldn't need, unless for admin purposes
+#   delete "/genres/:id" => "genres#destroy" # shouldn't need, unless for admin purposes
 
 #   # Favorite Routes
   get "/favorites" => "favorites#index" # a user can view their favorites
@@ -40,12 +40,12 @@ Rails.application.routes.draw do
   delete "/favorites/:id" => "favorites#destroy" # a user can remove a movie from their favorites
 
 
-#   # Category_Movie Routes
-#   get "/category_movies" => "category_movies#index" # shouldn't need, unless for admin purposes
-#   get "/category_movies/:id" => "category_movies#show" # shouldn't need, unless for admin purposes
-#   post "/category_movies" => "category_movies#create" # shouldn't need, unless for admin purposes
-#   patch "/category_movies/:id" => "category_movies#update" # shouldn't need, unless for admin purposes
-#   delete "/category_movies/:id" => "category_movies#destroy" # shouldn't need, unless for admin purposes
+#   # Movie_Genre Routes
+#   get "/movie_genres" => "movie_genres#index" # shouldn't need, unless for admin purposes
+#   get "/movie_genres/:id" => "movie_genres#show" # shouldn't need, unless for admin purposes
+#   post "/movie_genres" => "movie_genres#create" # shouldn't need, unless for admin purposes
+#   patch "/movie_genres/:id" => "movie_genres#update" # shouldn't need, unless for admin purposes
+#   delete "/movie_genres/:id" => "movie_genres#destroy" # shouldn't need, unless for admin purposes
 
   # Sessions Routes
   post "/sessions" => "sessions#create" # user login session
