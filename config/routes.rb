@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
 
   # User Routes
-  # get "/users" => "users#index" # view list of all users
-  # get "/users/:id" => "users#show" # view specific user
+  get "/users" => "users#index" # view list of all users
+  get "/users/:id" => "users#show" # view user's own details
   post "/users" => "users#create" # create a new user / a user can sign up
   patch "/users/:id" => "users#update" # user can edit their login information and settings
   delete "/users/:id" => "users#destroy" # allow users to delete their account
