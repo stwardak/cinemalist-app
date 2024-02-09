@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   patch "/users/:id" => "users#update" # user can edit their login information and settings
   delete "/users/:id" => "users#destroy" # allow users to delete their account
 
+  # Profile Routes
+  get "/profiles/:user_id" => "profiles#show" # a user can view another user's profile
+  patch "/profiles/:user_id" => "profiles#update" # a user can change their profile picture
+  # no index action needed
+  # create profile happens automatically upon signing up
+  # no destroy action needed, profile deleted with user destroy method
+  get "/avatar_options" => "profiles#avatar_options"
+
 #   # Director Routes
 #   get "/directors" => "directors#index" # a user can view all directors
 #   get "/directors/:id" => "directors#show" # a user can view a specific director

@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     @user.destroy
+    @user.profile.destroy
     render json: { message: "Account has been successfully deleted" }
   end
 
