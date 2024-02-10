@@ -11,27 +11,32 @@ class TmdbService
     genres = fetch_genres
     return unless genres
 
-    file_path = Rails.root.join('lib', 'tmdb_imports', 'movie_ids_02_06_2024 2.json')
+    file_path = Rails.root.join('lib', 'tmdb_imports', 'movie_ids_02_06_2024.json')
     line_count = 0
+    popularity_threshold = 10
 
     File.foreach(file_path) do |line|
-      break if line_count >= 5000
+      break if line_count >= 900000
       movie_data = JSON.parse(line)
+      
+      next if movie_data['popularity'].to_f < popularity_threshold #only import movies with popularity score over 5
+
       movie_details = fetch_movie_details(movie_data['id'])
 
       if movie_details
         genres = movie_details['genres']
         genres = genres.map { |genre| Genre.find_or_create_by(tmdb_genre_id: genre['id'], genre: genre['name']) }
-        puts "Movie details: #{movie_details.inspect}"
+        # puts "Movie details: #{movie_details.inspect}"
         movie = Movie.find_or_initialize_by(external_id: movie_data['id'])
-        movie.title = movie_data['original_title']
+        movie.title = movie_details['title']
         movie.description = movie_details['overview']
+        movie.popularity = movie_data['popularity']
         release_date = movie_details['release_date']
-        puts "Release date: #{release_date.inspect}"
+        # puts "Release date: #{release_date.inspect}" 
         movie.year = release_date[0..3] if release_date.present?
-        puts "Release date present: #{release_date}"
+        # puts "Release date present: #{release_date}"
         movie.image_url = "https://image.tmdb.org/t/p/original#{movie_details['poster_path']}" if movie_details['poster_path']
-        puts "Image URL: #{movie.image_url}"
+        # puts "Image URL: #{movie.image_url}"
         movie.genres = genres
         credits = fetch_movie_credits(movie_data['id'])
         director = credits['crew'].find { |member| member['job'] == 'Director' }

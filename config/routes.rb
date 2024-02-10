@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Movie Routes
-  get "/movies" => "movies#index" # a user can view all movies
-  get "/movies/:id" => "movies#show" # a user can view a specific movie
-  # post "/movies" => "movies#create" # will only need for admin
-  # patch "/movies/:id" => "movies#update" # will only need for admin
-  # delete "/movies/:id" => "movies#destroy" # shouldn't need, unless for admin purposes
-
-
   # User Routes
   get "/users" => "users#index" # view list of all users
   get "/users/:id" => "users#show" # view user's own details
@@ -24,16 +16,29 @@ Rails.application.routes.draw do
   # no destroy action needed, profile deleted with user destroy method
   get "/avatar_options" => "profiles#avatar_options"
 
-#   # Director Routes
-#   get "/directors" => "directors#index" # a user can view all directors
-#   get "/directors/:id" => "directors#show" # a user can view a specific director
+  # Relationship Routes
+  get "/users/:user_id/followers" => "relationships#followers" # view a user's followers
+  get "/users/:user_id/following" => "relationships#following" # view a user's followed users
+  post "/relationships" => "relationships#create" # follow a user 
+  delete "/relationships" => "relationships#destroy" # unfollow a user
+
+  # Movie Routes
+  get "/movies" => "movies#index" # a user can view all movies
+  get "/movies/:id" => "movies#show" # a user can view a specific movie
+  # post "/movies" => "movies#create" # will only need for admin
+  # patch "/movies/:id" => "movies#update" # will only need for admin
+  # delete "/movies/:id" => "movies#destroy" # shouldn't need, unless for admin purposes
+
+  # Director Routes
+  get "/directors" => "directors#index" # a user can view all directors
+  get "/directors/:id/:name" => "directors#show" # a user can view movies by a specific director
 #   post "/directors" => "directors#create" # shouldn't need, unless for admin purposes
 #   patch "/directors/:id" => "directors#update" # shouldn't need, unless for admin purposes
 #   delete "/directors/:id" => "directors#destroy" # shouldn't need, unless for admin purposes
 
-#   # Genre Routes
-#   get "/genres" => "genres#index" # a user can browse movies by genre
-#   get "/genres/:id" => "genres#show" # a user can view all movies in a genre
+  # Genre Routes
+  get "/genres" => "genres#index" # a user can browse movies by genre
+  get "/genres/:id/:genre" => "genres#show" # a user can view all movies in a genre
 #   post "/genres" => "genres#create" # shouldn't need, unless for admin purposes
 #   patch "/genres/:id" => "genres#update" # shouldn't need, unless for admin purposes
 #   delete "/genres/:id" => "genres#destroy" # shouldn't need, unless for admin purposes
@@ -46,7 +51,6 @@ Rails.application.routes.draw do
   post "/favorites" => "favorites#create" # a user can add a movie to their favorites
 #   patch "/favorites/:id" => "favorites#update" # shouldn't need, unless for admin purposes
   delete "/favorites/:id" => "favorites#destroy" # a user can remove a movie from their favorites
-
 
 #   # Movie_Genre Routes
 #   get "/movie_genres" => "movie_genres#index" # shouldn't need, unless for admin purposes

@@ -1,9 +1,8 @@
 class MoviesController < ApplicationController
   
   def index
-    @movies = Movie.order(Arel.sql('RANDOM()')).limit(50)
-    # random selection of 50 movies
-    # @movies = Movie.all
+    @movies = Movie.order(Arel.sql('RANDOM()')).limit(50)     # random selection of 50 movies
+    # @movies = Movie.all # all movies
     render :index
   end
 

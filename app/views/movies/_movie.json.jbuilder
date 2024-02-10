@@ -3,4 +3,8 @@ json.title movie.title
 json.description movie.description
 json.year movie.year
 json.image_url movie.image_url
-json.director_id movie.director_id
+json.director movie.director
+json.genres movie.genres
+json.favorites movie.favorites.count
+json.saved_movies movie.saved_movies.count
+json.watched_movies movie.watched_movies.count
