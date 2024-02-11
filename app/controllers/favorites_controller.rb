@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user
-
+  before_action :find_user, only: [:create, :destroy]
+  
   def index
     @favorites = Favorite.where(user_id: current_user.id)
     render :index

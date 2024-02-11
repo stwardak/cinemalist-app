@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+  before_action :find_user, only: [:create, :destroy]
   
   def index
     @movie = Movie.find(params[:movie_id])

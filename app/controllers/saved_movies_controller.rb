@@ -1,5 +1,5 @@
 class SavedMoviesController < ApplicationController
-  before_action :authenticate_user # user must be logged in to add to watchlist
+  before_action :find_user, only: [:create, :destroy]
 
   def index
     @saved_movies = SavedMovie.where(user_id: current_user.id)
