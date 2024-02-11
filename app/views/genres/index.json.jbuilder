@@ -1,1 +1,4 @@
-json.array! @genres, partial: "genres/genre", as: :genre
+json.array! @genres do |genre|
+  json.id genre.id
+  json.genre genre.genre
+end

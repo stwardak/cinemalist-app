@@ -1,2 +1,3 @@
-json.extract! genre, :id, :created_at, :updated_at
+json.id genre.id
+json.genre genre.genre
 json.url genre_url(genre, format: :json)

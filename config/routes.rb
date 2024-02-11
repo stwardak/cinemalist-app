@@ -31,14 +31,14 @@ Rails.application.routes.draw do
 
   # Director Routes
   get "/directors" => "directors#index" # a user can view all directors
-  get "/directors/:id/:name" => "directors#show" # a user can view movies by a specific director
+  get "/directors/:id(/:name)" => "directors#show" # a user can view movies by a specific director
 #   post "/directors" => "directors#create" # shouldn't need, unless for admin purposes
 #   patch "/directors/:id" => "directors#update" # shouldn't need, unless for admin purposes
 #   delete "/directors/:id" => "directors#destroy" # shouldn't need, unless for admin purposes
 
   # Genre Routes
   get "/genres" => "genres#index" # a user can browse movies by genre
-  get "/genres/:id/:genre" => "genres#show" # a user can view all movies in a genre
+  get "/genres/:id/(:genre)" => "genres#show" # a user can view all movies in a genre
 #   post "/genres" => "genres#create" # shouldn't need, unless for admin purposes
 #   patch "/genres/:id" => "genres#update" # shouldn't need, unless for admin purposes
 #   delete "/genres/:id" => "genres#destroy" # shouldn't need, unless for admin purposes

@@ -1,2 +1,2 @@
-module DirectorHelper
+module DirectorsHelper
 end
