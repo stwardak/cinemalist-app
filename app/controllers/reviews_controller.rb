@@ -9,9 +9,9 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:movie_id])
-    @review = @movie.reviews.find(params[:id])
-    render json: @review
+    @user = current_user
+    @reviews = @user.reviews
+    render json: @reviews
   end
 
   
@@ -30,15 +30,32 @@ class ReviewsController < ApplicationController
     end
   end
 
-  
-    def destroy
-      @review = Review.find_by(id: params[:id])
-      if @review.present? && @review.user_id == current_user.id
-         @review.destroy
-         render json: {message: "review has been successfully deleted"}
-      else
-        render json: {error: "user cannot delete another user's review"}
-      end
+
+  def update
+    @review = Review.find(params[:id])
+    if @review.user_id == current_user.id
+      @review.update(
+        rating: params[:rating] || @review.rating,
+        title: params[:title] || @review.title,
+        content: params[:content] || @review.content,
+        user_id: current_user.id,
+      )
     end
+    if @review.save
+      render json: @review
+    else
+      render json: { errors: @review.errors.full_messages }, status: :bad_request
+    end
+  end
   
+  def destroy
+    @review = Review.find(params[:id])
+    if @review.present? && @review.user_id == current_user.id
+        @review.destroy
+        render json: {message: "review has been successfully deleted"}
+    else
+      render json: {errors: @review.errors.full_messages}
+    end
+  end
+
 end
