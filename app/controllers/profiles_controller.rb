@@ -6,6 +6,10 @@ class ProfilesController < ApplicationController
 
       # Calculate movies watched this year
       @watched_movies_this_year = @user.watched_movies.where("created_at >= ?", Date.current.beginning_of_year).count
+      
+      # Calculate follower and following counts
+      @followers_count = @user.followers.count
+      @following_count = @user.followed.count
 
       render :show
     else
