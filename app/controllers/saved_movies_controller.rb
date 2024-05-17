@@ -1,8 +1,8 @@
 class SavedMoviesController < ApplicationController
-  before_action :find_user, only: [:create, :destroy]
+  # before_action :find_user, only: [:create, :destroy]
 
   def index
-    @saved_movies = SavedMovie.where(user_id: current_user.id)
+    @saved_movies = SavedMovie.where(user_id: params[:user_id])
     render :index
   end
 

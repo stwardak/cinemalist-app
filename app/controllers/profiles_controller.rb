@@ -1,8 +1,24 @@
 class ProfilesController < ApplicationController
   def show
-    @profile = Profile.find_by(id: params[:user_id])
-    render json: @profile
+    @user = User.find_by(username: params[:user_username])
+    @profile = @user.profile
+    # render json: @profile
+    render :show
   end
+
+  # def show
+  #   # Find the user based on username
+  #   user = User.find_by(username: params[:user_username])
+    
+  #   # If the user exists and has a profile, render the profile
+  #   if user && user.profile
+  #     @profile = user.profile
+  #     render :show
+  #   else
+  #     render json: { error: "Profile not found" }, status: :not_found
+  #   end
+  # end
+  
 
   def update
     @profile = current_user.profile

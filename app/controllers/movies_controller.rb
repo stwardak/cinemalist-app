@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   
   def index
-    @movies = Movie.order(Arel.sql('RANDOM()')).limit(50)     # random selection of 50 movies
+    @movies = Movie.where('popularity > ?', 50).order(Arel.sql('RANDOM()')).limit(48)     # random selection of 50 movies
     # @movies = Movie.all # all movies
     render :index
   end
@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find_by(id: params[:id])
     render :show
+    # render json: @movie
   end
 
 end

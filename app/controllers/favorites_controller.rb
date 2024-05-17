@@ -1,8 +1,8 @@
 class FavoritesController < ApplicationController
-  before_action :find_user, only: [:create, :destroy]
+  # before_action :find_user, only: [:create, :destroy]
   
   def index
-    @favorites = Favorite.where(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: params[:user_id])
     render :index
   end
 
@@ -17,6 +17,7 @@ class FavoritesController < ApplicationController
       render :show
     end
   end
+
 
   def destroy
     @favorite = Favorite.find_by(id: params[:id])

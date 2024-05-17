@@ -1,8 +1,7 @@
 class WatchedMoviesController < ApplicationController
-  before_action :find_user, only: [:create, :destroy] # user must be logged in to add to watchlist
 
   def index
-    @watched_movies = WatchedMovie.where(user_id: current_user.id)
+    @watched_movies = WatchedMovie.where(user_id: params[:user_id])
     render :index
   end
 

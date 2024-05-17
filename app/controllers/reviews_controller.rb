@@ -4,15 +4,28 @@ class ReviewsController < ApplicationController
   def index
     @movie = Movie.find(params[:movie_id])
     @reviews = @movie.reviews
-    # render :index
-    render json: @reviews
+    render json: @reviews, include: :movie
   end
 
   def show
-    @user = current_user
-    @reviews = @user.reviews
-    render json: @reviews
+    @user = User.find(params[:user_id])
+    @reviews = @user.reviews.includes(:movie)
+    reviews_with_movie_details = @reviews.map do |review|
+      {
+        id: review.id,
+        rating: review.rating,
+        title: review.title,
+        content: review.content,
+        movie_id: review.movie.id,
+        movie_title: review.movie.title,
+        movie_year: review.movie.year,
+        image_url: review.movie.image_url,
+        updated_at: review.updated_at
+      }
+    end
+    render json: reviews_with_movie_details
   end
+
 
   
   def create

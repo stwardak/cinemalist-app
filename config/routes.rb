@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete "/users/:id" => "users#destroy" # allow users to delete their account
 
   # Profile Routes
-  get "/profiles/:user_id" => "profiles#show" # a user can view another user's profile
+  get "/profiles/:user_username" => "profiles#show" # a user can view another user's profile
   patch "/profiles/:user_id" => "profiles#update" # a user can change their profile picture
   # create profile happens automatically upon signing up
   # no destroy action needed, profile deleted with user destroy method
@@ -31,11 +31,11 @@ Rails.application.routes.draw do
 
   # Genre Routes
   get "/genres" => "genres#index" # a user can browse movies by genre
-  get "/genres/:id/(:genre)" => "genres#show" # a user can view all movies in a genre
+  get "/genres/:id/(/:genre)" => "genres#show" # a user can view all movies in a genre
 
   # Favorite Routes
-  get "/favorites" => "favorites#index" # a user can view their favorites
-  post "/favorites" => "favorites#create" # a user can add a movie to their favorites
+  get "users/:user_id/favorites" => "favorites#index" # a user can view their favorites
+  post "users/:user_id/favorites" => "favorites#create" # a user can add a movie to their favorites
   delete "/favorites/:id" => "favorites#destroy" # a user can remove a movie from their favorites
 
   # Sessions Routes
