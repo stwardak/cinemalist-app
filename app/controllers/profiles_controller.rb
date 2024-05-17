@@ -1,9 +1,16 @@
 class ProfilesController < ApplicationController
   def show
     @user = User.find_by(username: params[:user_username])
-    @profile = @user.profile
-    # render json: @profile
-    render :show
+    if @user
+      @profile = @user.profile
+
+      # Calculate movies watched this year
+      @watched_movies_this_year = @user.watched_movies.where("created_at >= ?", Date.current.beginning_of_year).count
+
+      render :show
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end
   end
 
   # def show

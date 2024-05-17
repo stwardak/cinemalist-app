@@ -23,14 +23,13 @@ json.reviews @user.reviews do |review|
   json.movie_year review.movie.year
   
 end
-# json.watched_movies profile.user.watched_movies
-# json.saved_movies profile.user.saved_movies
-# json.reviews profile.user.reviews
 
 # user stats
-json.reviews_count profile.user.reviews.count
-json.favorites_count profile.user.favorites.count
-json.saved_movies_count profile.user.saved_movies.count
-json.watched_movies_count profile.user.watched_movies.count
+json.favorites_count @user.favorites.count
+json.reviews_count @user.reviews.count
+json.saved_movies_count @user.saved_movies.count
+json.watched_movies_count @user.watched_movies.count
+json.movies_count @user.watched_movies.count 
+json.this_year_count @watched_movies_this_year
 
 

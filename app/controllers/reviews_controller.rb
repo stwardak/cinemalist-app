@@ -26,8 +26,6 @@ class ReviewsController < ApplicationController
     render json: reviews_with_movie_details
   end
 
-
-  
   def create
     @review = Review.new(
       rating: params[:rating],

@@ -49,4 +49,9 @@ class UsersController < ApplicationController
     render json: { message: "Account has been successfully deleted" }
   end
 
+
+  def watched_movies_this_year
+    watched_movies.where("created_at >= ?", Date.current.beginning_of_year).count
+  end
+  
 end
