@@ -18,10 +18,18 @@ class UsersController < ApplicationController
       password: params[:password],
       password_confirmation: params[:password_confirmation],
       profile_visibility: params[:profile_visibility]
-
     )
     if user.save
-      render json: { message: "User created successfully" }, status: :created
+      user.profile.update(avatar: params[:avatar])
+      jwt = JWT.encode(
+        {
+          user_id: user.id,
+          exp: 24.hours.from_now.to_i
+        },
+        Rails.application.credentials.fetch(:secret_key_base),
+        "HS256"
+      )
+      render json: { jwt: jwt, username: user.username, email: user.email, user_id: user.id }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
