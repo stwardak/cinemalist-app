@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     render :show
   end
 
-
   def create
     user = User.new(
       username: params[:username],
@@ -29,7 +28,7 @@ class UsersController < ApplicationController
         Rails.application.credentials.fetch(:secret_key_base),
         "HS256"
       )
-      render json: { jwt: jwt, username: user.username, email: user.email, user_id: user.id }, status: :created
+      render json: { jwt: jwt, user_id: user.id, username: user.username, avatar: user.profile.avatar }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
