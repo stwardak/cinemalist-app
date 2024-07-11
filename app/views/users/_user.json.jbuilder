@@ -1,15 +1,10 @@
-# json.id user.id
-# json.username user.username
-# json.profile_visibility user.profile_visibility
-# json.user.profile user.profile
-
-
 json.id user.id
 json.username user.username
 json.profile_visibility user.profile_visibility
 json.user_profile user.profile
-# if user.profile
-#   json.user_profile user.profile
-# else
-#   json.user_profile nil
-# end
+json.favorites_count user.favorites.count
+json.watched_movies_count user.watched_movies.count
+json.saved_movies_count user.saved_movies.count
+json.reviews_count user.reviews.count
+json.followers_count user.followers.count
+json.following_count user.followed.count

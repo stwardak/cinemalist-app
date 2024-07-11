@@ -75,3 +75,5 @@ gem "jwt"
 gem "rack-cors"
 
 gem "http"
+
+gem 'will_paginate', '~> 3.1.0'
