@@ -59,4 +59,7 @@ Rails.application.routes.draw do
   patch "/users/:user_id/reviews/:id" => "reviews#update" # a user can edit their review
   delete "/users/:user_id/reviews/:id" => "reviews#destroy" # a user can delete their own review
 
+  # Search Route
+  get "/search", to: "search#query"
+
 end
